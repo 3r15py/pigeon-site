@@ -1,0 +1,255 @@
+:root {
+  --bg: #dcdcdc;
+  --ink: #1a1a1e;
+  --muted: #4a4a52;
+  --teal: #1ba89a;
+  --purple: #8b4da8;
+  --card: rgba(255, 255, 255, 0.55);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.65rem 1.25rem 1.25rem;
+}
+
+.top-nav {
+  width: 100%;
+  max-width: 42rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 1rem;
+  margin-bottom: 0.35rem;
+  font-size: clamp(0.95rem, 3.2vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.top-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.45rem;
+  transition: color 0.15s, background 0.15s;
+}
+
+.top-nav a:hover {
+  color: var(--purple);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.top-nav a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.top-nav-sep {
+  color: var(--muted);
+  font-weight: 400;
+  user-select: none;
+  opacity: 0.5;
+  font-size: 1.1em;
+}
+
+.center-stage {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  padding: 0.5rem 0 1rem;
+}
+
+main {
+  width: 100%;
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-pigeon {
+  width: min(94vw, 480px);
+  max-width: 100%;
+  height: auto;
+  margin: 0.35rem auto 0.5rem;
+  filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.14));
+}
+
+h1 {
+  font-family: "Bungee", cursive;
+  font-size: clamp(2.35rem, 9vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0.15rem 0 0;
+  background: linear-gradient(135deg, var(--teal), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+  max-width: 22rem;
+}
+
+.joke {
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  font-style: italic;
+  opacity: 0.88;
+}
+
+.ca-block {
+  width: 100%;
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1rem 1rem 0.85rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.25rem;
+}
+
+.ca-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.ca-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ca-text {
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 0.72rem;
+  word-break: break-all;
+  text-align: left;
+  flex: 1 1 12rem;
+  padding: 0.5rem 0.65rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.ca-text:hover {
+  border-color: var(--teal);
+  background: #fff;
+}
+
+.copy-btn {
+  font-family: "Bungee", cursive;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--teal), #148f82);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.12s, filter 0.12s;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+}
+
+.copy-toast {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  min-height: 1.25rem;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.stats {
+  width: 100%;
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stats-title {
+  font-family: "Bungee", cursive;
+  font-size: 1.05rem;
+  margin: 0 0 0.65rem;
+  text-transform: lowercase;
+  color: var(--ink);
+}
+
+.stats-sol {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-date {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0.35rem 0 0;
+}
+
+footer {
+  flex-shrink: 0;
+  padding-top: 0.75rem;
+  max-width: 28rem;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+footer a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="$pigeon — the memecoin that airdrops on everyone. Literally."
+    />
+    <title>$pigeon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="top-nav" aria-label="Links">
+      <a href="https://x.com/pigeondropper" target="_blank" rel="noopener noreferrer">X</a>
+      <span class="top-nav-sep" aria-hidden="true">·</span>
+      <a
+        href="https://x.com/i/communities/2031778355343700311"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Community</a>
+      <span class="top-nav-sep" aria-hidden="true">·</span>
+      <a
+        href="https://dexscreener.com/solana/7v2icjca7dsfjs1pwgtjy2ekewuebkrhqjci8ht4crr7"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Dexscreener</a>
+    </nav>
+    <div class="center-stage">
+      <main>
+        <h1>$pigeon</h1>
+        <img
+          class="hero-pigeon"
+          src="pigeon.png"
+          alt="Low-poly pigeon mascot"
+          width="560"
+          height="560"
+        />
+        <p class="tagline">
+          Solana’s finest feathered fiend. We airdrop tokens. We also joke about
+          airdropping <em>the other thing</em> on absolutely everyone. No
+          sidewalk is safe.
+        </p>
+        <p class="joke">Look up. Smile. It might be rewards. It might be “art.”</p>
+
+        <div class="ca-block">
+          <div class="ca-label">Contract (CA)</div>
+          <div class="ca-row">
+            <button
+              type="button"
+              class="ca-text"
+              id="ca-display"
+              title="Click to copy"
+              aria-label="Contract address, click to copy"
+            >
+              3AmTiVi5L4rDuf1CCQLkx8kBEZ52N6Mr7DrZwfDYjizz
+            </button>
+            <button type="button" class="copy-btn" id="copy-btn">Copy CA</button>
+          </div>
+          <div class="copy-toast" id="copy-toast" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Set data-sol to your total (e.g. data-sol="12.5") -->
+        <section class="stats" aria-labelledby="stats-heading" data-sol="0.00">
+          <h2 class="stats-title" id="stats-heading">shit airdropped</h2>
+          <p class="stats-sol" id="stats-sol"></p>
+          <p class="stats-date" id="stats-date"></p>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      $pigeon is a memecoin for entertainment only. Not financial advice. You
+      can lose money. Pigeons are not liable for anything that lands on your
+      wallet—or your shoes.
+    </footer>
+
+    <script>
+      (function () {
+        var CA = "3AmTiVi5L4rDuf1CCQLkx8kBEZ52N6Mr7DrZwfDYjizz";
+        var toast = document.getElementById("copy-toast");
+        var solEl = document.getElementById("stats-sol");
+        var dateEl = document.getElementById("stats-date");
+        var statsSection = document.querySelector(".stats");
+        var amount = (statsSection && statsSection.dataset.sol) || "0.00";
+        solEl.textContent = amount + " SOL";
+
+        dateEl.textContent = new Intl.DateTimeFormat("en", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(new Date());
+
+        function showToast(msg) {
+          toast.textContent = msg;
+          clearTimeout(showToast._t);
+          showToast._t = setTimeout(function () {
+            toast.textContent = "";
+          }, 2200);
+        }
+
+        function copyCa() {
+          function fallback() {
+            var ta = document.createElement("textarea");
+            ta.value = CA;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+              showToast("Copied. Fly responsibly.");
+            } catch (e) {
+              showToast("Could not copy—select and copy manually.");
+            }
+            document.body.removeChild(ta);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(CA).then(
+              function () {
+                showToast("Copied. Fly responsibly.");
+              },
+              function () {
+                fallback();
+              }
+            );
+          } else {
+            fallback();
+          }
+        }
+
+        document.getElementById("copy-btn").addEventListener("click", copyCa);
+        document.getElementById("ca-display").addEventListener("click", copyCa);
+      })();
+    </script>
+  </body>
+</html>
